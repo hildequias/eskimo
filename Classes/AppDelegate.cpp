@@ -1,5 +1,8 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
+#include "SimpleAudioEngine.h"
+
+using namespace CocosDenshion;
 
 USING_NS_CC;
 
@@ -38,40 +41,49 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
-        glview = GLViewImpl::createWithRect("eskimo", cocos2d::Rect(0, 0, designResolutionSize.width, designResolutionSize.height));
-#else
-        glview = GLViewImpl::create("eskimo");
-#endif
+        glview = GLViewImpl::create("Eskimo");
         director->setOpenGLView(glview);
     }
-
+    
     // turn on display FPS
     director->setDisplayStats(true);
-
+    
     // set FPS. the default value is 1.0/60 if you don't call this
-    director->setAnimationInterval(1.0f / 60);
-
-    // Set the design resolution
-    glview->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::NO_BORDER);
-    auto frameSize = glview->getFrameSize();
-    // if the frame's height is larger than the height of medium size.
-    if (frameSize.height > mediumResolutionSize.height)
-    {        
-        director->setContentScaleFactor(MIN(largeResolutionSize.height/designResolutionSize.height, largeResolutionSize.width/designResolutionSize.width));
+    director->setAnimationInterval(1.0 / 60);
+    
+    Size screenSize = glview->getFrameSize();
+    Size designSize = Size(320, 480);
+    
+    glview->setDesignResolutionSize(designSize.width, designSize.height, ResolutionPolicy::SHOW_ALL);
+    
+    std::vector<std::string> searchPaths;
+    
+    if (screenSize.width > 640) {
+        searchPaths.push_back("ipadhd");
+        director->setContentScaleFactor(1280/designSize.width);
+    } else if (screenSize.width > 320) {
+        searchPaths.push_back("ipad");
+        director->setContentScaleFactor(640/designSize.width);
+    } else {
+        searchPaths.push_back("iphone");
+        director->setContentScaleFactor(320/designSize.width);
     }
-    // if the frame's height is larger than the height of small size.
-    else if (frameSize.height > smallResolutionSize.height)
-    {        
-        director->setContentScaleFactor(MIN(mediumResolutionSize.height/designResolutionSize.height, mediumResolutionSize.width/designResolutionSize.width));
-    }
-    // if the frame's height is smaller than the height of medium size.
-    else
-    {        
-        director->setContentScaleFactor(MIN(smallResolutionSize.height/designResolutionSize.height, smallResolutionSize.width/designResolutionSize.width));
-    }
-
-    register_all_packages();
+    
+    auto fileUtils = FileUtils::getInstance();
+    fileUtils->setSearchPaths(searchPaths);
+    
+    auto audioEngine = SimpleAudioEngine::getInstance();
+    
+    audioEngine->preloadBackgroundMusic(fileUtils->fullPathForFilename("background.mp3").c_str());
+    audioEngine->preloadBackgroundMusic(fileUtils->fullPathForFilename("button.wav").c_str() );
+    audioEngine->preloadBackgroundMusic(fileUtils->fullPathForFilename("cap.wav").c_str() );
+    audioEngine->preloadBackgroundMusic(fileUtils->fullPathForFilename("igloo.wav").c_str() );
+    audioEngine->preloadBackgroundMusic(fileUtils->fullPathForFilename("oops.wav").c_str() );
+    audioEngine->preloadBackgroundMusic(fileUtils->fullPathForFilename("shape.wav").c_str() );
+    audioEngine->preloadBackgroundMusic(fileUtils->fullPathForFilename("switch.wav").c_str() );
+    
+    SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.5f);
+    SimpleAudioEngine::getInstance()->setEffectsVolume(0.5f);
 
     // create a scene. it's an autorelease object
     auto scene = HelloWorld::createScene();

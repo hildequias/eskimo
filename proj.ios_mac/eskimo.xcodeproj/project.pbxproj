@@ -68,6 +68,17 @@
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
+		E20AF8361E25095700175848 /* ipad in Resources */ = {isa = PBXBuildFile; fileRef = E20AF82B1E25095600175848 /* ipad */; };
+		E20AF8371E25095700175848 /* ipadhd in Resources */ = {isa = PBXBuildFile; fileRef = E20AF82C1E25095600175848 /* ipadhd */; };
+		E20AF8381E25095700175848 /* iphone in Resources */ = {isa = PBXBuildFile; fileRef = E20AF82D1E25095600175848 /* iphone */; };
+		E20AF8391E25095700175848 /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E20AF82E1E25095600175848 /* background.mp3 */; };
+		E20AF83A1E25095700175848 /* button.wav in Resources */ = {isa = PBXBuildFile; fileRef = E20AF82F1E25095600175848 /* button.wav */; };
+		E20AF83B1E25095700175848 /* cap.wav in Resources */ = {isa = PBXBuildFile; fileRef = E20AF8301E25095600175848 /* cap.wav */; };
+		E20AF83C1E25095700175848 /* igloo.wav in Resources */ = {isa = PBXBuildFile; fileRef = E20AF8311E25095600175848 /* igloo.wav */; };
+		E20AF83D1E25095700175848 /* oops.wav in Resources */ = {isa = PBXBuildFile; fileRef = E20AF8321E25095600175848 /* oops.wav */; };
+		E20AF83E1E25095700175848 /* shape.wav in Resources */ = {isa = PBXBuildFile; fileRef = E20AF8331E25095600175848 /* shape.wav */; };
+		E20AF83F1E25095700175848 /* switch.wav in Resources */ = {isa = PBXBuildFile; fileRef = E20AF8341E25095600175848 /* switch.wav */; };
+		E20AF8401E25095700175848 /* levels.plist in Resources */ = {isa = PBXBuildFile; fileRef = E20AF8351E25095700175848 /* levels.plist */; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
 /* End PBXBuildFile section */
@@ -100,6 +111,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = A07A4C241783777C0073F6A7;
 			remoteInfo = "cocos2dx iOS";
+		};
+		E20AF8421E25095700175848 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 507B40FD1C31BDD30067B53E;
+			remoteInfo = "libcocos2d tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -163,6 +181,17 @@
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		E20AF82B1E25095600175848 /* ipad */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ipad; sourceTree = "<group>"; };
+		E20AF82C1E25095600175848 /* ipadhd */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ipadhd; sourceTree = "<group>"; };
+		E20AF82D1E25095600175848 /* iphone */ = {isa = PBXFileReference; lastKnownFileType = folder; path = iphone; sourceTree = "<group>"; };
+		E20AF82E1E25095600175848 /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
+		E20AF82F1E25095600175848 /* button.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = button.wav; sourceTree = "<group>"; };
+		E20AF8301E25095600175848 /* cap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cap.wav; sourceTree = "<group>"; };
+		E20AF8311E25095600175848 /* igloo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = igloo.wav; sourceTree = "<group>"; };
+		E20AF8321E25095600175848 /* oops.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = oops.wav; sourceTree = "<group>"; };
+		E20AF8331E25095600175848 /* shape.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shape.wav; sourceTree = "<group>"; };
+		E20AF8341E25095600175848 /* switch.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = switch.wav; sourceTree = "<group>"; };
+		E20AF8351E25095700175848 /* levels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = levels.plist; sourceTree = "<group>"; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -240,6 +269,7 @@
 			children = (
 				1AC6FAF9180E9839004C840B /* libcocos2d Mac.a */,
 				1AC6FB07180E9839004C840B /* libcocos2d iOS.a */,
+				E20AF8431E25095700175848 /* libcocos2d tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -288,6 +318,17 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E20AF82B1E25095600175848 /* ipad */,
+				E20AF82C1E25095600175848 /* ipadhd */,
+				E20AF82D1E25095600175848 /* iphone */,
+				E20AF82E1E25095600175848 /* background.mp3 */,
+				E20AF82F1E25095600175848 /* button.wav */,
+				E20AF8301E25095600175848 /* cap.wav */,
+				E20AF8311E25095600175848 /* igloo.wav */,
+				E20AF8321E25095600175848 /* oops.wav */,
+				E20AF8331E25095600175848 /* shape.wav */,
+				E20AF8341E25095600175848 /* switch.wav */,
+				E20AF8351E25095700175848 /* levels.plist */,
 				521A8EA819F11F5000D177D7 /* fonts */,
 				3EACC98E19EE6D4300EB3C5E /* res */,
 				46880B7619C43A67006E1F66 /* CloseNormal.png */,
@@ -445,6 +486,13 @@
 			remoteRef = 1AC6FB06180E9839004C840B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		E20AF8431E25095700175848 /* libcocos2d tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libcocos2d tvOS.a";
+			remoteRef = E20AF8421E25095700175848 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -454,18 +502,29 @@
 			files = (
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
+				E20AF8361E25095700175848 /* ipad in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
+				E20AF83C1E25095700175848 /* igloo.wav in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				46880B8119C43A67006E1F66 /* HelloWorld.png in Resources */,
 				46880B7D19C43A67006E1F66 /* CloseSelected.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
+				E20AF83D1E25095700175848 /* oops.wav in Resources */,
+				E20AF8401E25095700175848 /* levels.plist in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
+				E20AF83B1E25095700175848 /* cap.wav in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
+				E20AF83F1E25095700175848 /* switch.wav in Resources */,
+				E20AF8381E25095700175848 /* iphone in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
+				E20AF8391E25095700175848 /* background.mp3 in Resources */,
+				E20AF8371E25095700175848 /* ipadhd in Resources */,
+				E20AF83A1E25095700175848 /* button.wav in Resources */,
+				E20AF83E1E25095700175848 /* shape.wav in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				3EACC98F19EE6D4300EB3C5E /* res in Resources */,
