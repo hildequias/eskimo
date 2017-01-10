@@ -9,7 +9,7 @@
 #include "MenuLayer.h"
 //#include "GameLayer.h"
 #include "SimpleAudioEngine.h"
-//#include "GameConfig.h"
+#include "GameConfig.h"
 
 using namespace CocosDenshion;
 
@@ -90,11 +90,11 @@ void MenuLayer::createScreen() {
     //load a particle system for snow
     _snow = ParticleSystemQuad::create("snow.plist");
     _snow->setPosition(Vec2(_screenSize.width * 0.5, _screenSize.height));
-    //this->addChild(_snow, kBackground);
+    this->addChild(_snow, kBackground);
     
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("sprite_sheet.plist");
     _layerBatchNode = SpriteBatchNode::create("sprite_sheet.png", 50);
-    //this->addChild(_layerBatchNode, kMiddleground);
+    this->addChild(_layerBatchNode, kMiddleground);
     
     auto ground = Sprite::createWithSpriteFrameName("intro_igloo.png");
     ground->setAnchorPoint(Vec2(0.5f, 0.05f));
@@ -119,14 +119,14 @@ void MenuLayer::createScreen() {
     _mainMenu = Menu::create(playItem, helpItem, NULL);
     _mainMenu->alignItemsVerticallyWithPadding(10);
     _mainMenu->setPosition(Vec2(_screenSize.width * 0.5f, _screenSize.height * 0.5f));
-    //this->addChild(_mainMenu, kForeground);
+    this->addChild(_mainMenu, kForeground);
     
     
     
     //add balloon caption
     _balloon = Sprite::createWithSpriteFrameName("cap.png");
     _balloon->setPosition(Vec2(_screenSize.width * 0.36f, _screenSize.height * 0.25f));
-    //_layerBatchNode->addChild(_balloon, kForeground);
+    _layerBatchNode->addChild(_balloon, kForeground);
     _balloon->setVisible(false);
     
     _caption1 = Sprite::createWithSpriteFrameName("cap_supper.png");

@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
+#include "MenuLayer.h"
 #include "SimpleAudioEngine.h"
 
 using namespace CocosDenshion;
@@ -86,8 +86,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     SimpleAudioEngine::getInstance()->setEffectsVolume(0.5f);
 
     // create a scene. it's an autorelease object
-    auto scene = HelloWorld::createScene();
-
+    auto scene = MenuLayer::scene();
+    
     // run
     director->runWithScene(scene);
 
