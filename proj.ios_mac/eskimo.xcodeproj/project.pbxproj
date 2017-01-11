@@ -67,6 +67,8 @@
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 		E20727C21E26B37700DD3F23 /* Platform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E20727C01E26B37700DD3F23 /* Platform.cpp */; };
+		E20727C61E26B61C00DD3F23 /* Igloo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E20727C41E26B61C00DD3F23 /* Igloo.cpp */; };
+		E20727C91E26B83F00DD3F23 /* GSwitch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E20727C71E26B83F00DD3F23 /* GSwitch.cpp */; };
 		E20AF8361E25095700175848 /* ipad in Resources */ = {isa = PBXBuildFile; fileRef = E20AF82B1E25095600175848 /* ipad */; };
 		E20AF8371E25095700175848 /* ipadhd in Resources */ = {isa = PBXBuildFile; fileRef = E20AF82C1E25095600175848 /* ipadhd */; };
 		E20AF8381E25095700175848 /* iphone in Resources */ = {isa = PBXBuildFile; fileRef = E20AF82D1E25095600175848 /* iphone */; };
@@ -185,6 +187,10 @@
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		E20727C01E26B37700DD3F23 /* Platform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Platform.cpp; sourceTree = "<group>"; };
 		E20727C11E26B37700DD3F23 /* Platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Platform.h; sourceTree = "<group>"; };
+		E20727C41E26B61C00DD3F23 /* Igloo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Igloo.cpp; sourceTree = "<group>"; };
+		E20727C51E26B61C00DD3F23 /* Igloo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Igloo.h; sourceTree = "<group>"; };
+		E20727C71E26B83F00DD3F23 /* GSwitch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GSwitch.cpp; sourceTree = "<group>"; };
+		E20727C81E26B83F00DD3F23 /* GSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSwitch.h; sourceTree = "<group>"; };
 		E20AF82B1E25095600175848 /* ipad */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ipad; sourceTree = "<group>"; };
 		E20AF82C1E25095600175848 /* ipadhd */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ipadhd; sourceTree = "<group>"; };
 		E20AF82D1E25095600175848 /* iphone */ = {isa = PBXFileReference; lastKnownFileType = folder; path = iphone; sourceTree = "<group>"; };
@@ -372,6 +378,10 @@
 				E2A568B51E2572FC00AD695D /* GameLayer.h */,
 				E20727C01E26B37700DD3F23 /* Platform.cpp */,
 				E20727C11E26B37700DD3F23 /* Platform.h */,
+				E20727C41E26B61C00DD3F23 /* Igloo.cpp */,
+				E20727C51E26B61C00DD3F23 /* Igloo.h */,
+				E20727C71E26B83F00DD3F23 /* GSwitch.cpp */,
+				E20727C81E26B83F00DD3F23 /* GSwitch.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -588,10 +598,12 @@
 				E20AF8461E2513E400175848 /* MenuLayer.cpp in Sources */,
 				E2A568B31E25723600AD695D /* Eskimo.cpp in Sources */,
 				E20727C21E26B37700DD3F23 /* Platform.cpp in Sources */,
+				E20727C91E26B83F00DD3F23 /* GSwitch.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				E2A568B61E2572FC00AD695D /* GameLayer.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				E2A568AC1E256A9D00AD695D /* LevelSelectLayer.cpp in Sources */,
+				E20727C61E26B61C00DD3F23 /* Igloo.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

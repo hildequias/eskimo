@@ -7,11 +7,11 @@
 //
 
 #include "GameLayer.h"
-//#include "Platform.h"
-//#include "GSwitch.h"
+#include "Platform.h"
+#include "GSwitch.h"
 #include "MenuLayer.h"
 #include "Eskimo.h"
-//#include "Igloo.h"
+#include "Igloo.h"
 
 static GameLayer* _instance = NULL;
 
@@ -20,8 +20,8 @@ const char* GameLayer::NOTIFICATION_LEVEL_COMPLETED = "NOTIFICATION_LEVEL_COMPLE
 
 GameLayer::~GameLayer()
 {
-    //_platformPool.clear();
-    //_gSwitchPool.clear();
+    _platformPool.clear();
+    _gSwitchPool.clear();
     _buttons.clear();
     CC_SAFE_RELEASE(_player);
     
@@ -50,8 +50,6 @@ GameLayer::GameLayer() {
     listenerTouches->onTouchBegan = CC_CALLBACK_2(GameLayer::onTouchBegan, this);
     listenerTouches->onTouchEnded = CC_CALLBACK_2(GameLayer::onTouchEnded, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listenerTouches, this);
-    
-    
 }
 
 GameLayer * GameLayer::create (int level, int levelsCompleted) {
@@ -82,7 +80,6 @@ void GameLayer::initPhysics() {
     _gameBatchNode->addChild(_player, kMiddleground);
 }
 
-//
 void GameLayer::loadLevel (int level) {
     
     clearLayer();
@@ -96,19 +93,18 @@ void GameLayer::loadLevel (int level) {
     ValueVector platforms = levelData.at("platforms").asValueVector();
     for ( auto platformData : platforms)
     {
-        //auto platform = _platformPool.at(_platformPoolIndex);
+        auto platform = _platformPool.at(_platformPoolIndex);
         _platformPoolIndex++;
-        //if (_platformPoolIndex == _platformPool.size()) _platformPoolIndex = 0;
+        if (_platformPoolIndex == _platformPool.size()) _platformPoolIndex = 0;
         
         ValueMap data = platformData.asValueMap();
         
-//        platform->initPlatform (
-//                                data.at("width").asInt() * TILE,
-//                                data.at("angle").asFloat(),
-//                                Vec2(data.at("x").asFloat() * TILE,
-//                                     data.at("y").asFloat() * TILE)
-//                                );
-        
+        platform->initPlatform (
+                                data.at("width").asInt() * TILE,
+                                data.at("angle").asFloat(),
+                                Vec2(data.at("x").asFloat() * TILE,
+                                     data.at("y").asFloat() * TILE)
+                                );
     }
     
 }
@@ -151,20 +147,20 @@ void GameLayer::resetLevel() {
     ValueVector switches = levelData.at("switches").asValueVector();
     
     for (int i = 0; i < switches.size(); i++) {
-        //auto gswitch = _gSwitchPool.at(i);
+        auto gswitch = _gSwitchPool.at(i);
         ValueMap data = switches.at(i).asValueMap();
         if ( i< switches.size())
         {
-//            gswitch->initGSwitch(
-//                                 data.at("gravity").asInt(),
-//                                 Vec2(data.at("x").asFloat() * TILE,
-//                                      data.at("y").asFloat() * TILE
-//                                      ));
+            gswitch->initGSwitch(
+                                 data.at("gravity").asInt(),
+                                 Vec2(data.at("x").asFloat() * TILE,
+                                      data.at("y").asFloat() * TILE
+                                      ));
             
         }
         else
         {
-//            gswitch->setVisible(false);
+            gswitch->setVisible(false);
         }
         i++;
         
@@ -177,11 +173,12 @@ void GameLayer::resetLevel() {
     _player->reset();
     
     //reset igloo to level end position
-//    _igloo->initIgloo(_gravity, Vec2(levelData.at("endx").asFloat() * TILE,
-//                                     levelData.at("endy").asFloat() * TILE));
+    _igloo->initIgloo(_gravity, Vec2(levelData.at("endx").asFloat() * TILE,
+                                     levelData.at("endy").asFloat() * TILE));
+    
     //reset smoke particle to match igloo position
-//    _smoke->setPosition(Vec2(_igloo->getPositionX() + TILE,
-//                             _igloo->getPositionY() + TILE * 0.5f));
+    _smoke->setPosition(Vec2(_igloo->getPositionX() + TILE,
+                             _igloo->getPositionY() + TILE * 0.5f));
     
     //hide smoke. only shown when level is completed
     _smoke->setVisible(false);
@@ -263,64 +260,64 @@ void GameLayer::update(float dt) {
     float diffx;
     float diffy;
     
-//    for (auto gSwitch : _gSwitchPool) {
-//        if (!gSwitch->isVisible()) continue;
-//        diffx = gSwitch->getPositionX() - _player->getPositionX();
-//        diffy = gSwitch->getPositionY() - _player->getPositionY();
-//        if (pow(diffx, 2) + pow (diffy, 2) < PLAYER_SWITCH_RADII) {
-//            SimpleAudioEngine::getInstance()->playEffect("switch.wav");
-//            _gravity = gSwitch->getDirection();
-//            gSwitch->setVisible(false);
-//            //notify of collision
-//            
-//            EVENT_DISPATCHER->dispatchCustomEvent(GameLayer::NOTIFICATION_GRAVITY_SWITCH);
-//            //change world gravity
-//            switch (_gravity) {
-//                case kDirectionUp:
-//                    _world->SetGravity(b2Vec2(0, FORCE_GRAVITY));
-//                    break;
-//                case kDirectionDown:
-//                    _world->SetGravity(b2Vec2(0, -FORCE_GRAVITY));
-//                    break;
-//                case kDirectionLeft:
-//                    _world->SetGravity(b2Vec2(-FORCE_GRAVITY, 0 ));
-//                    break;
-//                case kDirectionRight:
-//                    _world->SetGravity(b2Vec2(FORCE_GRAVITY, 0 ));
-//                    break;
-//            }
-//            break;
-//        }
-//    }
+    for (auto gSwitch : _gSwitchPool) {
+        if (!gSwitch->isVisible()) continue;
+        diffx = gSwitch->getPositionX() - _player->getPositionX();
+        diffy = gSwitch->getPositionY() - _player->getPositionY();
+        if (pow(diffx, 2) + pow (diffy, 2) < PLAYER_SWITCH_RADII) {
+            SimpleAudioEngine::getInstance()->playEffect("switch.wav");
+            _gravity = gSwitch->getDirection();
+            gSwitch->setVisible(false);
+            //notify of collision
+            
+            EVENT_DISPATCHER->dispatchCustomEvent(GameLayer::NOTIFICATION_GRAVITY_SWITCH);
+            //change world gravity
+            switch (_gravity) {
+                case kDirectionUp:
+                    _world->SetGravity(b2Vec2(0, FORCE_GRAVITY));
+                    break;
+                case kDirectionDown:
+                    _world->SetGravity(b2Vec2(0, -FORCE_GRAVITY));
+                    break;
+                case kDirectionLeft:
+                    _world->SetGravity(b2Vec2(-FORCE_GRAVITY, 0 ));
+                    break;
+                case kDirectionRight:
+                    _world->SetGravity(b2Vec2(FORCE_GRAVITY, 0 ));
+                    break;
+            }
+            break;
+        }
+    }
     
     //check for level complete (collision with Igloo)
-//    diffx = _player->getPositionX() - _igloo->getPositionX();
-//    diffy = _player->getPositionY() - _igloo->getPositionY();
-//    if (pow(diffx, 2) + pow(diffy, 2) < IGLOO_SQ_RADIUS) {
-//        SimpleAudioEngine::getInstance()->playEffect("igloo.wav");
-//        
-//        _player->setVisible(false);
-//        _btnPause->setVisible(false);
-//        _btnReset->setVisible(false);
-//        
-//        //notify of Level Completed. Igloo will listen to this and change its texture.
-//        EVENT_DISPATCHER->dispatchCustomEvent(GameLayer::NOTIFICATION_LEVEL_COMPLETED);
-//        
-//        //run smoke particle
-//        _smoke->setVisible(true);
-//        _smoke->resetSystem();
-//        _messages->setString("well done!");
-//        _messages->setVisible(true);
-//        
-//        //create delay until new level is loaded
-//        auto  sequence = Sequence::create(
-//                                          DelayTime::create(2.5f),
-//                                          CallFunc::create(std::bind(&GameLayer::newLevel, this) ),
-//                                          nullptr);
-//        this->runAction(sequence);
-//        _tutorialLabel->setVisible(false);
-//        _running = false;
-//    }
+    diffx = _player->getPositionX() - _igloo->getPositionX();
+    diffy = _player->getPositionY() - _igloo->getPositionY();
+    if (pow(diffx, 2) + pow(diffy, 2) < IGLOO_SQ_RADIUS) {
+        SimpleAudioEngine::getInstance()->playEffect("igloo.wav");
+        
+        _player->setVisible(false);
+        _btnPause->setVisible(false);
+        _btnReset->setVisible(false);
+        
+        //notify of Level Completed. Igloo will listen to this and change its texture.
+        EVENT_DISPATCHER->dispatchCustomEvent(GameLayer::NOTIFICATION_LEVEL_COMPLETED);
+        
+        //run smoke particle
+        _smoke->setVisible(true);
+        _smoke->resetSystem();
+        _messages->setString("well done!");
+        _messages->setVisible(true);
+        
+        //create delay until new level is loaded
+        auto  sequence = Sequence::create(
+                                          DelayTime::create(2.5f),
+                                          CallFunc::create(std::bind(&GameLayer::newLevel, this) ),
+                                          nullptr);
+        this->runAction(sequence);
+        _tutorialLabel->setVisible(false);
+        _running = false;
+    }
     
     //check for game over. player is off screen
     if (_player->getPositionY() > _screenSize.height || _player->getPositionY() < 0
@@ -469,28 +466,28 @@ Scene* GameLayer::scene(int level, int levelsCompleted)
 }
 
 void GameLayer::createPools() {
-//    _gSwitchPool = Vector<GSwitch*>(30);
-//    for (int i = 0; i < 30; i++) {
-//        auto sprite = GSwitch::create();
-//        sprite->setVisible(false);
-//        _gSwitchPool.pushBack(sprite);
-//        _gameBatchNode->addChild(sprite);
-//    }
-//    
-//    _platformPool = Vector<Platform *>(50);
-//    for (int  i = 0; i < 50; i++) {
-//        auto platform = Platform::create(this);
-//        platform->setVisible(false);
-//        _gameBatchNode->addChild(platform);
-//        _platformPool.pushBack(platform);
-//    }
+    _gSwitchPool = Vector<GSwitch*>(30);
+    for (int i = 0; i < 30; i++) {
+        auto sprite = GSwitch::create();
+        sprite->setVisible(false);
+        _gSwitchPool.pushBack(sprite);
+        _gameBatchNode->addChild(sprite);
+    }
+    
+    _platformPool = Vector<Platform *>(50);
+    for (int  i = 0; i < 50; i++) {
+        auto platform = Platform::create(this);
+        platform->setVisible(false);
+        _gameBatchNode->addChild(platform);
+        _platformPool.pushBack(platform);
+    }
     _platformPoolIndex = 0;
     
 }
 
 void GameLayer::createScreen() {
     //if we load this scene first, load sprite frames
-    //SpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("sprite_sheet.plist");
+    SpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("sprite_sheet.plist");
     
     Sprite * bg = Sprite::create("bg.jpg");
     bg->setPosition(Vec2(_screenSize.width * 0.5f, _screenSize.height * 0.5f));
@@ -499,9 +496,9 @@ void GameLayer::createScreen() {
     _gameBatchNode = SpriteBatchNode::create("sprite_sheet.png", 200);
     this->addChild(_gameBatchNode, kMiddleground);
     
-//    _igloo = Igloo::create(this);
-//    _igloo->setVisible(false);
-//    _gameBatchNode->addChild(_igloo, kForeground);
+    _igloo = Igloo::create(this);
+    _igloo->setVisible(false);
+    _gameBatchNode->addChild(_igloo, kForeground);
     
     //create buttons
     _buttons = Vector<Sprite *>(5);
@@ -569,7 +566,6 @@ void GameLayer::createScreen() {
     _smoke->stopSystem();
     this->addChild(_smoke, kForeground);
     
-    
     _tutorialLabel = Label::createWithTTF(TUTORIAL_1, "fonts/Verdana.ttf", 25);
     _tutorialLabel->setWidth(_screenSize.width * 0.7f);
     _tutorialLabel->setHeight(_screenSize.height * 0.4f);
@@ -582,12 +578,12 @@ void GameLayer::createScreen() {
 //hide elements from previous level
 void GameLayer::clearLayer() {
     
-//    for (auto sprite : _platformPool) {
-//        sprite->getBody()->SetActive(false);
-//        sprite->setVisible(false);
-//    }
-//    
-//    for (auto sprite : _gSwitchPool) {
-//        sprite->setVisible(false);
-//    }
+    for (auto sprite : _platformPool) {
+        sprite->getBody()->SetActive(false);
+        sprite->setVisible(false);
+    }
+    
+    for (auto sprite : _gSwitchPool) {
+        sprite->setVisible(false);
+    }
 }

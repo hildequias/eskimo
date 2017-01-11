@@ -13,10 +13,10 @@
 #include "cocos2d.h"
 #include "Box2D/Box2D.h"
 
-//class GSwitch;
-//class Platform;
+class GSwitch;
+class Platform;
 class Eskimo;
-//class Igloo;
+class Igloo;
 
 USING_NS_CC;
 using namespace CocosDenshion;
@@ -59,13 +59,13 @@ private:
     
     ParticleSystem * _smoke;
     
-    //Vector<Platform *> _platformPool;
-    //Vector<GSwitch *> _gSwitchPool;
+    Vector<Platform *> _platformPool;
+    Vector<GSwitch *> _gSwitchPool;
     ValueVector _levels;
     Vector<Sprite *> _buttons;
     
     Eskimo * _player;
-    //Igloo * _igloo;
+    Igloo * _igloo;
     
     Size _screenSize;
     bool _running;
