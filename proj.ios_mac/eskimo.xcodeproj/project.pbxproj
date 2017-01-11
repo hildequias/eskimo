@@ -66,6 +66,7 @@
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
+		E20727C21E26B37700DD3F23 /* Platform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E20727C01E26B37700DD3F23 /* Platform.cpp */; };
 		E20AF8361E25095700175848 /* ipad in Resources */ = {isa = PBXBuildFile; fileRef = E20AF82B1E25095600175848 /* ipad */; };
 		E20AF8371E25095700175848 /* ipadhd in Resources */ = {isa = PBXBuildFile; fileRef = E20AF82C1E25095600175848 /* ipadhd */; };
 		E20AF8381E25095700175848 /* iphone in Resources */ = {isa = PBXBuildFile; fileRef = E20AF82D1E25095600175848 /* iphone */; };
@@ -182,6 +183,8 @@
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		E20727C01E26B37700DD3F23 /* Platform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Platform.cpp; sourceTree = "<group>"; };
+		E20727C11E26B37700DD3F23 /* Platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Platform.h; sourceTree = "<group>"; };
 		E20AF82B1E25095600175848 /* ipad */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ipad; sourceTree = "<group>"; };
 		E20AF82C1E25095600175848 /* ipadhd */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ipadhd; sourceTree = "<group>"; };
 		E20AF82D1E25095600175848 /* iphone */ = {isa = PBXFileReference; lastKnownFileType = folder; path = iphone; sourceTree = "<group>"; };
@@ -367,6 +370,8 @@
 				E2A568B21E25723600AD695D /* Eskimo.h */,
 				E2A568B41E2572FC00AD695D /* GameLayer.cpp */,
 				E2A568B51E2572FC00AD695D /* GameLayer.h */,
+				E20727C01E26B37700DD3F23 /* Platform.cpp */,
+				E20727C11E26B37700DD3F23 /* Platform.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -582,6 +587,7 @@
 				E2A568B01E256DEB00AD695D /* b2Sprite.cpp in Sources */,
 				E20AF8461E2513E400175848 /* MenuLayer.cpp in Sources */,
 				E2A568B31E25723600AD695D /* Eskimo.cpp in Sources */,
+				E20727C21E26B37700DD3F23 /* Platform.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				E2A568B61E2572FC00AD695D /* GameLayer.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
